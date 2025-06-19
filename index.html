@@ -3,57 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日本で遊び倒せ！| Discover Japan Like Never Before</title>
+  <title>日本で遊び倒せ！ | Discover Japan Like Never Before</title>
   <style>
-    body { margin: 0; font-family: 'Helvetica Neue', sans-serif; color: #333; line-height: 1.6; }
-    header { background: url('https://source.unsplash.com/1600x900/?sushi,japan') center/cover no-repeat; color: white; padding: 100px 20px; text-align: center; }
-    header h1 { font-size: 3em; margin-bottom: 10px; }
-    header p { font-size: 1.3em; }
-    section { padding: 60px 20px; max-width: 1000px; margin: auto; }
-    .section-title { font-size: 2em; margin-bottom: 20px; text-align: center; }
-    .image-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
-    .image-grid img { width: 100%; border-radius: 12px; height: 200px; object-fit: cover; }
-    .features li { margin-bottom: 15px; }
-    footer { background: #f2f2f2; padding: 40px 20px; text-align: center; color: #777; font-size: 0.9em; }
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      color: white;
+      line-height: 1.6;
+      background: url('https://cdn.pixabay.com/photo/2020/03/10/04/49/awa-4916602_1280.jpg') center/cover no-repeat fixed;
+    }
+    header {
+      padding: 100px 20px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    header h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px #000;
+    }
+    header p {
+      font-size: 1.3em;
+      text-shadow: 2px 2px 4px #000;
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+    }
+    .section-title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .image-grid img {
+      width: 100%;
+      border-radius: 12px;
+      height: 200px;
+      object-fit: cover;
+    }
+    .features li {
+      margin-bottom: 15px;
+    }
+    footer {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 20px;
+      text-align: center;
+      color: #ccc;
+      font-size: 0.9em;
+    }
   </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const lang = navigator.language || navigator.userLanguage;
+      const text = {
+        ja: {
+          title: "日本で遊び倒せ！",
+          subtitle: "寿司をつまんで、地元のバーで乾杯。知られざる体験を、あなたの旅に。",
+          features: [
+            "\u{1F4CD} 現地ローカルがすすめる『穴場』グルメ情報",
+            "\u{2B50} ミシュラン級の特別体験レストランの提案",
+            "\u{1F389} 行ったことないクラブやバーのディスカバリー",
+            "\u{26F0} 秘境での地元体験やアクティビティの紹介",
+            "\u{1F4F7} 写真とともに魅力を直感的に感じられるUI",
+            "\u{1F4C5} 時間・場所に合わせてプランを自動提案"
+          ]
+        },
+        en: {
+          title: "Play Hard in Japan!",
+          subtitle: "Grab sushi and toast at a local bar. Discover experiences that only locals know.",
+          features: [
+            "\u{1F4CD} Local hidden gourmet spots",
+            "\u{2B50} Michelin-level restaurant experiences",
+            "\u{1F389} Discover clubs and bars you've never visited",
+            "\u{26F0} Unique local activities in remote places",
+            "\u{1F4F7} Intuitive interface with real photos",
+            "\u{1F4C5} Auto-suggested plans by time & location"
+          ]
+        }
+      };
+      const locale = lang.startsWith("ja") ? "ja" : "en";
+      document.getElementById("main-title").innerText = text[locale].title;
+      document.getElementById("main-subtitle").innerText = text[locale].subtitle;
+      const list = document.getElementById("features-list");
+      list.innerHTML = text[locale].features.map(item => `<li>${item}</li>`).join('');
+    });
+  </script>
 </head>
 <body>
   <header>
-    <h1>日本で遊び倒せ！</h1>
-    <p>寿司をつまんで、地元のバーで乾杯。知られざる体験を、あなたの旅に。</p>
+    <h1 id="main-title">Loading...</h1>
+    <p id="main-subtitle"></p>
   </header>
 
   <section>
-    <h2 class="section-title">このサービスでできること</h2>
-    <ul class="features">
-      <li>📍 現地ローカルがすすめる「穴場」グルメ情報</li>
-      <li>⭐ ミシュラン級の特別体験レストランの提案</li>
-      <li>🎉 行ったことないクラブやバーのディスカバリー</li>
-      <li>⛰ 秘境での地元体験やアクティビティの紹介</li>
-      <li>📷 写真とともに魅力を直感的に感じられるUI</li>
-      <li>🗓 時間・場所に合わせてプランを自動提案</li>
-    </ul>
+    <h2 class="section-title">Are you ready to Expokor in Japan? / What You Can Do</h2>
+    <ul class="features" id="features-list"></ul>
   </section>
 
   <section>
-    <h2 class="section-title">リアルな瞬間の一部</h2>
+    <h2 class="section-title">リアルな瞬間 / Real Moments</h2>
     <div class="image-grid">
-      <img src="https://source.unsplash.com/800x600/?japanese-food,sushi" alt="寿司を楽しむ外国人">
-      <img src="https://source.unsplash.com/800x600/?japan,countryside" alt="田舎の秘境でくつろぐ旅行者">
-      <img src="https://source.unsplash.com/800x600/?japan,bar" alt="バーで乾杯する外国人">
-      <img src="https://source.unsplash.com/800x600/?japan,nightlife" alt="日本のナイトライフ">
+      <img src="https://source.unsplash.com/800x600/?japanese-food,sushi" alt="Sushi enjoyment">
+      <img src="https://source.unsplash.com/800x600/?japan,countryside" alt="Countryside relaxation">
+      <img src="https://source.unsplash.com/800x600/?japan,bar" alt="Bar cheers">
+      <img src="https://source.unsplash.com/800x600/?japan,nightlife" alt="Nightlife in Japan">
     </div>
   </section>
 
   <section>
-    <h2 class="section-title">さあ、探検しよう</h2>
+    <h2 class="section-title">さあ、探検しよう / Start Exploring</h2>
     <p style="text-align: center; font-size: 1.2em;">
       いつもの旅行では満足できないあなたに。<br>
-      本当に面白い「日本の歩き方」、見つけてみませんか？
+      本当に面白い「日本の歩き方」、見つけてみませんか？<br>
+      Explore Japan beyond the guidebook.
     </p>
   </section>
-<footer>
+
+  <footer>
     © 2025 Japan Explorer | 日本で遊び倒せ！ All rights reserved.
   </footer>
 </body>
 </html>
+
