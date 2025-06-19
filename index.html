@@ -30,18 +30,7 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      animation: slideShow 10s infinite;
-    }
-
-    .slideshow img:nth-child(1) { animation-delay: 0s; }
-    .slideshow img:nth-child(2) { animation-delay: 5s; }
-
-    @keyframes slideShow {
-      0% { opacity: 1; }
-      45% { opacity: 1; }
-      50% { opacity: 0; }
-      95% { opacity: 0; }
-      100% { opacity: 1; }
+      transition: opacity 1s ease-in-out;
     }
 
     .header-content {
@@ -52,12 +41,12 @@
       transform: translate(-50%, -50%);
       color: white;
       text-align: center;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
     }
 
     .header-content h1 {
       font-size: 3em;
       margin: 0;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
     }
 
     .header-content p {
@@ -135,7 +124,6 @@
     <div class="image-grid">
       <img src="images/sushi.jpeg" alt="寿司を楽しむ外国人">
       <img src="images/country_side.jpeg" alt="田舎の秘境でくつろぐ旅行者">
-      <!-- bar.jpg は未アップロードなので外しました -->
       <img src="images/nightlife.jpeg" alt="日本のナイトライフ">
     </div>
   </section>
@@ -151,5 +139,19 @@
   <footer>
     © 2025 Japan Explorer | 日本で遊び倒せ！ All rights reserved.
   </footer>
+
+  <script>
+    const slides = document.querySelectorAll('.slideshow img');
+    let current = 0;
+    slides.forEach((img, i) => {
+      img.style.opacity = i === 0 ? '1' : '0';
+    });
+
+    setInterval(() => {
+      slides[current].style.opacity = '0';
+      current = (current + 1) % slides.length;
+      slides[current].style.opacity = '1';
+    }, 5000);
+  </script>
 </body>
 </html>
